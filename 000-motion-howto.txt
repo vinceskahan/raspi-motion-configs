@@ -1,0 +1,20 @@
+
+image the pi, get it running normally on wifi
+get ssh authorized_keys2 set up for local pull of data
+
+apt-get update
+apt-get -y install motion
+
+drop /etc/motion/motion.conf into place
+ (set debug level to ERR at top)
+
+mkdir -p /mnt/ramdisk/motion
+
+edit /etc/default/motion to set 'yes' for startup
+systemctl enable motion
+systemctl start motion
+(checkout /var/log/messages and /mnt/ramdisk/motion)
+
+install crontab
+
+make sure weewx system can ssh in to grab output per its crontab
